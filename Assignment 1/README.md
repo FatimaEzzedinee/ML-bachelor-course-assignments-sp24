@@ -124,9 +124,9 @@ The contents of the folder are as follows:
 - `report_surname_name.pdf`: an example of the report;
 - `report_surname_name.tex`: the LaTeX source for the provided report pdf;
 
-Please note that we also uploaded the data for T1 and T2 online at this [link](https://drive.switch.ch/index.php/s/37RuoA3Mgt9Rqah) and for T3: [link](https://drive.switch.ch/index.php/s/37RuoA3Mgt9Rqah/)
+Please note that we also uploaded the data for T1 and T2 online at this [link](https://drive.switch.ch/index.php/s/37RuoA3Mgt9Rqah) and for T3: [link](https://drive.switch.ch/index.php/s/Wp0I2gb33mhERFN)
 
-The `example.ipynb` Notebook loads the data from this [link](https://drive.switch.ch/index.php/s/37RuoA3Mgt9Rqah) (you can also load them from the data folder), loads a model from the file, and evaluates the model's MSE on the loaded data.
+The `example.ipynb` Notebook loads the data from the links (you can also load them from the data folder), loads a model from the file, and evaluates the model's MSE on the loaded data.
 
 You must submit a zip file with a structure similar to the repository, but:
 
