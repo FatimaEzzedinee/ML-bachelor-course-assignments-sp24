@@ -112,17 +112,19 @@ If you want to work locally, you can install Python libraries using something li
 
 ### Submission
 
-In the [GitHub repository of the course](https://github.com/FatimaEzzedinee/ML-bachelor-course-assignments-sp24), you will find a folder named `assignment 1`.
+In the [GitHub repository of the course](https://github.com/FatimaEzzedinee/ML-bachelor-course-assignments-sp24), you will find a folder named `Assignment 1`.
 The contents of the folder are as follows:
 
-- `data/`:
+- `Data/`:
     - `data.npz`: a file storing the dataset for Task 1 and 2 in a native Numpy format;
     - `data_bonus.npz`: a file storing the dataset for Task 3 in a native Numpy format;
-- `deliverable/`:
-    - `example.ipynb`: a working example of how to evaluate our baseline model;
+- `Report Template/`:
+   - `report_surname_name.pdf`: an example of the report;
+   - `report_surname_name.tex`: the LaTeX source for the provided report pdf;
+- `Torch Model/`:
     - `baseline.pt`: a torch file storing our baseline model;
-- `report_surname_name.pdf`: an example of the report;
-- `report_surname_name.tex`: the LaTeX source for the provided report pdf;
+- `example.ipynb`: a working example of how to evaluate our baseline model;
+
 
 Please note that we also uploaded the data for T1 and T2 online at this [link](https://drive.switch.ch/index.php/s/37RuoA3Mgt9Rqah) and for T3: [link](https://drive.switch.ch/index.php/s/Wp0I2gb33mhERFN)
 
