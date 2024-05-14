@@ -172,15 +172,14 @@ Implement a multi-class classifier (CNN model) to identify the class of the imag
 \newpage
 \section{VGG19 fine tuning}
 
-This task involves loading the VGG19 model from PyTorch, fine-tuning it, and experimenting with different model cuts.
-The VGG19 architecture have 19 layers grouped into 5 blocks, comprising 16 convolutional layers followed by 3 fully-connected layers. Its success in achieving strong performance on various image classification benchmarks makes it a well-known model.
+This task involves loading the VGG19 model from PyTorch, applying transfer learning, and experimenting with different model cuts. The VGG19 architecture have 19 layers grouped into 5 blocks, comprising 16 convolutional layers followed by 3 fully-connected layers. Its success in achieving strong performance on various image classification benchmarks makes it a well-known model.
 
-Your task is to fine-tune a pre-trained VGG19 model. A code snippet that loads the VGG19 model from PyTorch is provided. You'll be responsible for completing the remaining code sections (marked as TODO).  Specifically:
+Your task is to apply transfer learning with a pre-trained VGG19 model. A code snippet that loads the VGG19 model from PyTorch is provided. You'll be responsible for completing the remaining code sections (marked as TODO). Specifically:
 
 \begin{enumerate}
-    \item The provided code snippet sets param.requires\_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of fine-tuning? Will the weights of the pre-trained VGG19 model be updated during training?
+    \item The provided code snippet sets param.requires\_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of transfer learning and fine-tuning? Will the weights of the pre-trained VGG19 model be updated during transfer learning training?
 
-    \item We want to fine-tune a pre-trained VGG19 model for our specific classification task. The code has sections for \_\_init\_\_ and forward functions but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
+    \item We want to transfer learning with a pre-trained VGG19 model for our specific classification task. The code has sections for \_\_init\_\_ and forward functions but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
 implement the \_\_init\_\_ and forward functions to accommodate these two cuts:
 \begin{itemize}
     \item This cut should take the pre-trained layers up to and including the 11th convolution layer (Block 4).
@@ -191,21 +190,19 @@ Note after each cut take the activation function and the pooling layer associate
 
 \begin{figure}[th]
 \centering
-\includegraphics[scale=0.35]{cuts.png}
+\includegraphics[scale=0.35]{VGG19-Ass2.png}
 \caption{Cuts}
 \label{fig:scenario}
 \end{figure}
 \end{itemize}
 
+\item In both cases, after the cut, add a sequence of layers (of your choice) with appropriate activation functions, leading to a final output layer with the desired number of neurons for your classification task.
+Train the two models (one with Cut 1 and another with Cut 2) on your chosen dataset. Once training is complete, compare their performance statistically.
+
+\item Based on the performance comparison, discuss any observed differences between the two models. What could be the potential reasons behind these results?
+
+\item BONUS (optional): Try different cuts in each block of VGG19, and plot one single figure with all the train-validation-test accuracies. Explain in detail the reasons behind the variation of results you get.
 \end{enumerate}
 
 
-
-3. In both cases, after the cut, add a sequence of layers (of your choice) with appropriate activation functions, leading to a final output layer with the desired number of neurons for your classification task.
-Train the two models (one with Cut 1 and another with Cut 2) on your chosen dataset. Once training is complete, compare their performance statistically.
-
-4. Based on the performance comparison, discuss any observed differences between the two models. What could be the potential reasons behind these results?
-
-
 \end{document}
-
