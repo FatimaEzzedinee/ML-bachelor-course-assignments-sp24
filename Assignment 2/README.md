@@ -7,7 +7,7 @@ In this assignment you are asked to:
 3. Implement transfer learning.
 
 Both requests are very similar to what we have seen during the labs. However, you are required to follow **exactly** the assignment's specifications.
-Make sure to motivate **all** your choices, parameters, losses and asnwers.
+Make sure to motivate **all** your choices, parameters, losses and answers.
 Once completed, please submit your solution on the iCorsi platform following the instructions below. 
 
 It is **Highly** recommended to google colab GPUs, or you will have RAMS problems.
