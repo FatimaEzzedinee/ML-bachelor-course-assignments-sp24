@@ -27,7 +27,7 @@ You are provided with Torch dataset class called Dataset, you can use it.
     - Use only torch nn.Linear layers.
     - Use no more than 3 layers, considering also the output one.
     - Use ReLU activation for all layers other than the output one.
-5. Draw a plot with epochs on the x-axis and with two graph[Dataset](Dataset)s: the train accuracy and the validation accuracy (remember to add a legend to distinguish the two graphs!).
+5. Draw a plot with epochs on the x-axis and with two graphs: the training accuracy and the validation accuracy (remember to add a legend to distinguish the two graphs!).
 6. Assess and comment on the performances of the network on the test set loaded in point 1, and provide an estimate of the classification accuracy that you expect on new and unseen images. 
 
 
