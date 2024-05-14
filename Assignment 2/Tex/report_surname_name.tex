@@ -1,0 +1,211 @@
+
+%----------------------------------------------------------------------------------------
+%	Machine Learning Assignment Template
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{scrartcl}
+\newcommand*\student[1]{\newcommand{\thestudent}{{#1}}}
+
+%----------------------------------------------------------------------------------------
+%	INSERT HERE YOUR NAME
+%----------------------------------------------------------------------------------------
+
+\student{Surname Name}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Use 8-bit encoding
+\usepackage[sc]{mathpazo}
+\usepackage{caption, subcaption}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{inconsolata}
+
+\usepackage[english]{babel} % English language hyphenation
+\usepackage{amsmath, amsfonts} % Math packages
+\usepackage{listings} % Code listings, with syntax highlighting
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{{Figures/}{./}} % Specifies where to look for included images (trailing slash required)
+\usepackage{float}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT MARGINS
+%----------------------------------------------------------------------------------------
+
+\usepackage{geometry} % For page dimensions and margins
+\geometry{
+	paper=a4paper, 
+	top=2.5cm, % Top margin
+	bottom=3cm, % Bottom margin
+	left=3cm, % Left margin
+	right=3cm, % Right margin
+}
+\setlength\parindent{0pt}
+
+%----------------------------------------------------------------------------------------
+%	SECTION TITLES
+%----------------------------------------------------------------------------------------
+
+\usepackage{sectsty}
+\sectionfont{\vspace{6pt}\centering\normalfont\scshape}
+\subsectionfont{\normalfont\bfseries} % \subsection{} styling
+\subsubsectionfont{\normalfont\itshape} % \subsubsection{} styling
+\paragraphfont{\normalfont\scshape} % \paragraph{} styling
+
+%----------------------------------------------------------------------------------------
+%	HEADERS AND FOOTERS
+%----------------------------------------------------------------------------------------
+
+\usepackage{scrlayer-scrpage}
+\ofoot*{\pagemark} % Right footer
+\ifoot*{\thestudent} % Left footer
+\cfoot*{} % Centre footer
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\title{	
+	\normalfont\normalsize
+	\textsc{Machine Learning\\%
+	Universit\`a della Svizzera italiana}\\
+	\vspace{25pt}
+	\rule{\linewidth}{0.5pt}\\
+	\vspace{20pt}
+	{\huge Assignment 2}\\
+	\vspace{12pt}
+	\rule{\linewidth}{1pt}\\
+	\vspace{12pt}
+}
+
+\author{\LARGE \thestudent}
+
+\date{\normalsize\today}
+
+\begin{document}
+
+\maketitle
+
+Please refer to the \textbf{ReadMe} file to get the exact all questions. This is just a template of how your report should look like.
+In this assignment, you are asked to:
+
+\begin{enumerate}
+\item Implement a fully connected feed-forward neural network to classify images from the \textbf{Cats of the Wild} dataset.
+
+\item Implement a convolutional neural network to classify images of \textbf{Cats of the Wild} dataset.
+\end{enumerate}
+
+Both requests are very similar to what we have seen during the labs. However, you are required to follow \textbf{exactly} the assignment's specifications.
+
+%----------------------------------------------------------------------------------------
+%	Task 1
+%----------------------------------------------------------------------------------------
+\section{Image Classification with Fully Connected Feed Forward Neural Networks (FFNN)}
+
+In this task, you will try and build a classifier for the provided dataset. This task, you will build a classic Feed Forward Neural Network.
+
+\begin{enumerate}
+\item Download and load the dataset using the following \href{https://drive.switch.ch/index.php/s/XSnhQDNar7y46oQ}{link}.  The dataset consist of 7 classes with a folder for each class images. The classes are 'CHEETAH' ,'OCELOT', 'SNOW LEOPARD', 'CARACAL', 'LIONS', 'PUMA', 'TIGER'. Check Cell 1 in 'example.ipynb' to find the ready and implemented function to load the dataset. 
+
+\item Preprocess the data: normalize each pixel of each channel so that the range is [0, 1].
+\item One hot encode the labels (the y variable).
+
+\item Flatten the images into 1D vectors. You can achieve that by using \href{https://pytorch.org/docs/stable/generated/torch.reshape.html}{[torch.reshape]} or by prepending a \href{https://pytorch.org/docs/stable/generated/torch.nn.Flatten.html}{[Flatten layer]} to your architecture; if you follow this approach this layer will not count for the rules at point 5.
+
+\item Build a Feed Forward Neural Network of your choice, following these constraints:
+\begin{itemize}
+	\item Use only torch nn.Linear layers.
+	\item Use no more than 3 layers, considering also the output one.
+	\item Use ReLU activation for all layers other than the output one.
+\end{itemize}
+
+\item Draw a plot with epochs on the x-axis and with two graphs: the train accuracy and the validation accuracy (remember to add a legend to distinguish the two graphs!).
+\item Assess and comment on the performances of the network on your test set, and provide an estimate of the classification accuracy that you expect on new and unseen images. 
+\item \textbf{Bonus} (Optional) Train your architecture of choice (you are allowed to change the input layer dimensionality!) following the same procedure as above, but, instead of the flattened images, use any feature of your choice as input. 
+You can think of these extracted features as a conceptual equivalent of the Polynomial Features you saw in Regression problems, where the input data were 1D vectors. 
+Remember that images are just 3D tensors (HxWxC) where the first two dimensions are the Height and Width of the image and the last dimension represents the channels (usually 3 for RGB images, one for red, one for green and one for blue). 
+You can compute functions of these data as you would for any multi-dimensional array. 
+A few examples of features that can be extracted from images are:
+\begin{itemize}
+	\item Mean and variance over the whole image.
+	\item Mean and variance for each channel.
+	\item Max and min values over the whole image.
+	\item Max and min values for each channel.
+	\item Ratios between statistics of different channels (e.g. Max Red / Max Blue)
+	\item \href{https://en.wikipedia.org/wiki/Image_histogram}{Image Histogram} (Can be compute directly by temporarely converting to numpy arrays and using \href{https://numpy.org/doc/stable/reference/generated/numpy.histogram.html}{np.histogram})
+\end{itemize}
+But you can use anything that you think may carry useful information to classify an image.
+
+\textbf{N.B.} If you carry out point 7 also consider the obtained model and results in the discussion of point 6.
+\end{enumerate}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	Task 2
+%----------------------------------------------------------------------------------------
+
+\section{Image Classification with Convolutional Neural Networks (CNN)}
+
+Implement a multi-class classifier (CNN model) to identify the class of the images: 'CHEETAH' ,'OCELOT', 'SNOW LEOPARD', 'CARACAL', 'LIONS', 'PUMA', 'TIGER'.
+
+\begin{enumerate}
+\item Follow steps 1 and 2 from T1 to prepare the data.
+\item Build a CNN of your choice, following these constraints: 
+\begin{itemize}
+\item use 3 convolutional layers.
+\item use 3 pooling layers.
+\item use 3 dense layers (output layer included).
+\end{itemize}
+\item Train and validate your model. Choose the right optimizer and loss function. 
+\item Follow steps 5 and 6 of T1 to assess performance.
+\item Qualitatively and \textbf{statistically} compare the results obtained in T1 with the ones obtained in T2. Explain what you think the motivations for the difference in performance may be.
+\item \textbf{Bonus} (Optional) Tune the model hyper-parameters with a \textbf{grid search} to improve the performances (if feasible).
+\begin{itemize}
+\item Perform a grid search on the chosen ranges based on hold-out cross-validation in the training set and identify the most promising hyper-parameter setup.
+\item Compare the accuracy on the test set achieved by the most promising configuration with that of the model obtained in point 4. Are the accuracy levels \textbf{statistically} different?
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\section{VGG19 fine tuning}
+
+This task involves loading the VGG19 model from PyTorch, fine-tuning it, and experimenting with different model cuts.
+The VGG19 architecture have 19 layers grouped into 5 blocks, comprising 16 convolutional layers followed by 3 fully-connected layers. Its success in achieving strong performance on various image classification benchmarks makes it a well-known model.
+
+Your task is to fine-tune a pre-trained VGG19 model. A code snippet that loads the VGG19 model from PyTorch is provided. You'll be responsible for completing the remaining code sections (marked as TODO).  Specifically:
+
+\begin{enumerate}
+    \item The provided code snippet sets param.requires\_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of fine-tuning? Will the weights of the pre-trained VGG19 model be updated during training?
+
+    \item We want to fine-tune a pre-trained VGG19 model for our specific classification task. The code has sections for \_\_init\_\_ and forward functions but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
+implement the \_\_init\_\_ and forward functions to accommodate these two cuts:
+\begin{itemize}
+    \item This cut should take the pre-trained layers up to and including the 11th convolution layer (Block 4).
+
+    \item Cut 2: This cut should use all the convolutional layers from the pre-trained VGG19 model (up to Block 5).
+    
+Note after each cut take the activation function and the pooling layer associated with the convolution layer on the cut
+
+\begin{figure}[th]
+\centering
+\includegraphics[scale=0.35]{cuts.png}
+\caption{Cuts}
+\label{fig:scenario}
+\end{figure}
+\end{itemize}
+
+\end{enumerate}
+
+
+
+3. In both cases, after the cut, add a sequence of layers (of your choice) with appropriate activation functions, leading to a final output layer with the desired number of neurons for your classification task.
+Train the two models (one with Cut 1 and another with Cut 2) on your chosen dataset. Once training is complete, compare their performance statistically.
+
+4. Based on the performance comparison, discuss any observed differences between the two models. What could be the potential reasons behind these results?
+
+
+\end{document}
+
