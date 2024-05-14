@@ -27,7 +27,7 @@ You are provided with Torch dataset class called Dataset, you can use it.
 4. Build a Feed Forward Neural Network of your choice, following these constraints:
     - Use only torch nn.Linear layers.
     - Use no more than 3 layers, considering also the output one.
-    - Use ReLU activation for all layers other than the output one.
+    - Use GELU activation for all layers other than the output one.
 5. Draw a plot with epochs on the x-axis and with two graphs: the training accuracy and the validation accuracy (remember to add a legend to distinguish the two graphs!).
 6. Assess and comment on the performances of the network on the test set loaded in point 1, and provide an estimate of the classification accuracy that you expect on new and unseen images. 
 
@@ -40,7 +40,7 @@ Implement a multi-class classifier (CNN model) to identify the class of the imag
 2. Build a CNN of your choice, following these constraints: 
  - use 3 convolutional layers
  - use 3 pooling layers
- - use 3 dense layers (output layer included).
+ - use 4 dense layers (output layer included).
 3. Train and validate your model. Choose the right optimizer and loss function.
 4. Follow steps 5 and 6 of T1 to assess performance.
 5. Qualitatively and **statistically** compare the results obtained in T1 with the ones obtained in T2. Explain what you think the motivations for the difference in performance may be.
@@ -60,13 +60,13 @@ Your task is to apply transfer learning with a pre-trained VGG19 model. A code s
 1. The provided code snippet sets param.requires_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of transfer learning and fine-tuning? Will the weights of the pre-trained VGG19 model be updated during transfer learning training?
 
 2. We want to transfer learning with a pre-trained VGG19 model for our specific classification task. The code has sections for __init__ and forward functions, but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
-mplement the __init__ and forward functions to accommodate these two cuts:
+implement the __init__ and forward functions to accommodate these two cuts:
 - Cut 1: This cut should take the pre-trained layers up to and including the 11th convolution layer (Block 4).
 - Cut 2: This cut should use all the convolutional layers from the pre-trained VGG19 model (up to Block 5).
 Note after each cut take the activation function and the pooling layer associated with the convolution layer on the cut
 ![Alt text](cuts.png)
 
-3. In both cases, after the cut, add a sequence of layers (of your choice) with appropriate activation functions, leading to a final output layer. Train the two models (one with Cut 1 and another with Cut 2) on the dataset. Once training is complete, compare their performance statistically.
+3. In both cases, after the cut, add a sequence of layers (of your choice) with appropriate activation functions, leading to a final output layer. For both models, train the added layers (one with Cut 1 and another with Cut 2) on the dataset. Once training is complete, statistically compare their performance.
 
 4. Based on the performance comparison, discuss any observed differences between the two models. What could be the potential reasons behind these results?
    
