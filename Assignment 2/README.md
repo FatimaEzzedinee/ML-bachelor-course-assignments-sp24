@@ -3,7 +3,8 @@
 In this assignment you are asked to:
 
 1. Implement a fully connected feed forward neural network to classify images from the 'Cats of the Wild' dataset.
-2. Implement a convolutional neural network to classify images of 'Cats of the Wild';
+2. Implement a convolutional neural network to classify images of 'Cats of the Wild'.
+3. Implement transfer learning.
 
 Both requests are very similar to what we have seen during the labs. However, you are required to follow **exactly** the assignment's specifications.
 Make sure to motivate **all** your choices, parameters, losses and asnwers.
@@ -49,16 +50,16 @@ Implement a multi-class classifier (CNN model) to identify the class of the imag
     - Compare the accuracy on the test set achieved by the most promising configuration with that of the model obtained in point 4. Are the accuracy levels **statistically** different?
 
 
-### T3. VGG19 fine tuning (30 pts)
+### T3. Transfer Learning (30 pts)
 
-This task involves loading the VGG19 model from PyTorch, fine-tuning it, and experimenting with different model cuts.
+This task involves loading the VGG19 model from PyTorch, applying transfer learning, and experimenting with different model cuts.
 The VGG19 architecture have 19 layers grouped into 5 blocks, comprising 16 convolutional layers followed by 3 fully-connected layers. Its success in achieving strong performance on various image classification benchmarks makes it a well-known model.
 
-Your task is to fine-tune a pre-trained VGG19 model. A code snippet that loads the VGG19 model from PyTorch is provided. You'll be responsible for completing the remaining code sections (marked as TODO).  Specifically:
+Your task is to apply transfer learning with a pre-trained VGG19 model. A code snippet that loads the VGG19 model from PyTorch is provided. You'll be responsible for completing the remaining code sections (marked as TODO).  Specifically:
 
-1. The provided code snippet sets param.requires_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of fine-tuning? Will the weights of the pre-trained VGG19 model be updated during training?
+1. The provided code snippet sets param.requires_grad = False for the pre-trained VGG19 model's parameters. Can you explain the purpose of this step in the context of transfer learning and fine-tuning? Will the weights of the pre-trained VGG19 model be updated during training?
 
-2. We want to fine-tune a pre-trained VGG19 model for our specific classification task. The code has sections for __init__ and forward functions, but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
+2. We want to transfer learning with a pre-trained VGG19 model for our specific classification task. The code has sections for __init__ and forward functions, but needs to be completed to incorporate two different "cuts" from the VGG19 architecture. After each cut, additional linear layers are needed for classification (similar to Block 6 of VGG19).
 mplement the __init__ and forward functions to accommodate these two cuts:
 - Cut 1: This cut should take the pre-trained layers up to and including the 11th convolution layer (Block 4).
 - Cut 2: This cut should use all the convolutional layers from the pre-trained VGG19 model (up to Block 5).
